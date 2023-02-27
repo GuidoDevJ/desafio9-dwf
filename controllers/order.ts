@@ -32,7 +32,7 @@ export const orderById = async (id: string, body, token) => {
       },
       external_reference,
       notification_url:
-        "https://mercadopago-pi.vercel.app/api/webhooks/mercadopago",
+        "https://desafio9-dwf.vercel.app/api/webhooks/mercadopago",
     });
     return {pref,external_reference};
   } catch (error) {
