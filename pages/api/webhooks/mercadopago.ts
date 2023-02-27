@@ -14,7 +14,7 @@ const postHandler=async (req:NextApiRequest,res:NextApiResponse)=>{
             myOrder.data.status ="closed",
             await myOrder.push()
             // ENVIAR CORREO AL USUARIO
-            let sent = sendStatusPay(myOrder.data.userId,myOrder.data.status)
+            let sent = await sendStatusPay(myOrder.data.userId,myOrder.data.status)
             console.log(sent)
             // ENVIAR CORREO INTERNO
             res.json(order)
