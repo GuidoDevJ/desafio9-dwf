@@ -5,7 +5,7 @@ import { sendEmailStatusPay } from "./sendrid";
 export async function sendStatusPay(userId: string, status: string,orderId:string) {
     let user = new User(userId)
     let finalStatus:string;
-    if(status === "closed") finalStatus === "Done"
+    if(status === "closed") finalStatus = "Done"
 
     try {
         await user.pull()
