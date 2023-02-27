@@ -7,6 +7,7 @@ const postHandler=async (req:NextApiRequest,res:NextApiResponse)=>{
     const {id,topic} = req.query
     if(topic=="merchant_order"){
         let order = await checkMerchantOrders(id.toString())
+        console.log(order)
         if(order.order_status =="paid"){
             const orderId = order.external_reference
             let myOrder = new Order(orderId)
@@ -14,8 +15,7 @@ const postHandler=async (req:NextApiRequest,res:NextApiResponse)=>{
             myOrder.data.status ="closed",
             await myOrder.push()
             // ENVIAR CORREO AL USUARIO
-            let sent = await sendStatusPay(myOrder.data.userId,myOrder.data.status)
-            console.log(sent)
+            let sent = await sendStatusPay(myOrder.data.userId,myOrder.data.status,orderId)
             // ENVIAR CORREO INTERNO
             res.json(order)
         }
