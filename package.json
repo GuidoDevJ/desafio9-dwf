@@ -13,6 +13,7 @@
     "@types/mercadopago": "^1.5.8",
     "airtable": "^0.11.6",
     "algoliasearch": "^4.14.3",
+    "ava": "^5.2.0",
     "date-fns": "^2.29.3",
     "firebase-admin": "^11.5.0",
     "jsonwebtoken": "^9.0.0",

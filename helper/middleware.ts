@@ -6,12 +6,13 @@ export default function authMiddleware(callback?){
     return function(req:NextApiRequest,res:NextApiResponse){
         const token = parseBearerToken(req)
         if(token === null){
-            res.status(400).json({msg:"No paso ningun token"})
+            return res.status(401).send({ message: "token required" });
+
         }
 
         const decoded = decodeToken(token)
         if(!decoded){
-            res.status(401).json({msg:"Token invalido"})
+            return res.status(401).send({ message: "invalid token" });
         }
         callback(req,res,decoded)
     }

@@ -10,6 +10,7 @@ export async function sendStatusPay(userId: string, status: string,orderId:strin
     try {
         await user.pull()
         await sendEmailStatusPay(user.data.email, status)
+        // ENVIAR CORREO AL SISTEMA DE AIRTABLE (SISTEMA INTERNO)
         baseVentas('Ventas').create([
             {
                 "fields": {
