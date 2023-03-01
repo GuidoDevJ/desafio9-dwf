@@ -21,3 +21,7 @@ En este desafio se creo una Api Rest con Next Js aplicando conceptos de la arqui
 [API](https://documenter.getpostman.com/view/19071215/2s93CSpBaA)
 
 ---
+
+## Versiones
+
+1. V1.0.1: Faltan mejorar el manejo de errores.
