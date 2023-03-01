@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "helper/jsonToken.test. .mjs"  ],
   "exclude": [
     "node_modules"
   ]

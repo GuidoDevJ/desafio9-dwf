@@ -7,25 +7,27 @@ const bodySchema = yup.object().shape({
     newAddress: yup.string().required(),
   });
 
+async function patchAddress(req:NextApiRequest,res:NextApiResponse,token){
+    const body = req.body
+    console.log(token)
+    try {
+        let validate = await bodySchema.validate(body)
+    } catch (error) {
+        res.status(400).send(error.errors[0])
+    }
 
+    try {
+        await updateAdress(token,body.newAddress)
+        res.json({msg:"success"})
+    } catch (error) {
+        res.json({msg:error})
+    }
+    
+
+} 
+  
 const handler = methods({
-    async patch(req:NextApiRequest,res:NextApiResponse,token){
-        const body = req.body
-        try {
-            let validate = await bodySchema.validate(body)
-        } catch (error) {
-            res.status(400).send(error.errors[0])
-        }
-
-        try {
-            await updateAdress(token,body.newAddress)
-            res.json({msg:"success"})
-        } catch (error) {
-            res.json({msg:error})
-        }
-        
-
-    } 
+    patch:patchAddress
 })
 
 export default authMiddleware(handler)

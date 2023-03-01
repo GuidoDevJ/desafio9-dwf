@@ -8,8 +8,7 @@ export function generateToken(obj){
 export function decodeToken(token){
     
     try {
-        var decoded = jwt.verify(token, secret);
-        return decoded
+      return jwt.verify(token,process.env.SECRET_PASS)
       } catch(err) {
         console.error("token invalido")
         return false

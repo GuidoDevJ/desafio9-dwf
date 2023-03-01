@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import methods from "micro-method-router";
 import { searchProducts } from "controllers/algoliaControllers";
+import { schemaMiddleware } from "lib/yupValidation";
+import * as yup from "yup"
+const schemaQueryLimitAndOffser = yup.object().shape({
+  q:yup.string().required(),
+  offset:yup.string(),
+  limit:yup.string()
+}).noUnknown(true).strict()
 
 async function search(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -27,8 +34,12 @@ async function search(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
+
+const schemaSearch = schemaMiddleware(schemaQueryLimitAndOffser as any,search,"query")
+
+
 let handler = methods({
-  get: search,
+  get: schemaSearch,
 });
 
 export default handler;

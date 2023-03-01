@@ -2,6 +2,8 @@ import { User } from "models/user";
 export async function updateData(userId: string, body: {}): Promise<void> {
   try {
     let user = new User(userId);
+    await user.pull()
+    console.log(user.data)
     user.data = {
       ...user.data,
       ...body,
@@ -25,7 +27,7 @@ export async function getData(token) {
   try {
     let user = new User(token);
     await user.pull();
-    return user.data;
+    return user;
   } catch (error) {
     return error;
   }
