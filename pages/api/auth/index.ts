@@ -20,10 +20,4 @@ async function handlerAuth(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-// const handler: any = methods ({
-//     post: (handlerAuth)=>authMiddleware(handlerAuth),
-//  })
-
-// const middleware = authMiddleware(handler)
-
 export default schemaMiddleware(authSchema as any, handlerAuth, "body");

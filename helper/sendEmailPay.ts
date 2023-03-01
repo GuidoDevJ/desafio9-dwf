@@ -21,6 +21,7 @@ export async function sendStatusPay(userId: string, status: string,orderId:strin
             }
         ], function (err, records) {
             if (err) {
+                 // Controlar posibles errores desde vercel o la misma terminal en caso de desarrollo
                 console.error(err);
                 return;
             }

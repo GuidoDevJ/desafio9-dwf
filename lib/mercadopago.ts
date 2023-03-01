@@ -19,6 +19,7 @@ export async function createPreference(data:{}){
         const res = await mercadopago.preferences.create(data)
         return res.body
     } catch (error) {
+        // Controlar posibles errores desde vercel o la misma terminal en caso de desarrollo
         console.log(error)
         return error
     }
