@@ -1,7 +1,8 @@
 import { getProductById } from "controllers/algoliaControllers";
+import { handlerCORS } from "helper/middleware";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+async function getProduct (req: NextApiRequest, res: NextApiResponse) {
   try {
     let idProduct = req.query.id as string;
     let product = await getProductById(idProduct);
@@ -11,3 +12,4 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     res.status(404).json({msg:error.error});
   }
 }
+export default handlerCORS(getProduct)
