@@ -16,7 +16,7 @@
     ],
     "environmentVariables": {
       "TESTING": "true",
-      "SECRET_PASS":"asdasdasdasdas"
+      "SECRET_PASS": "asdasdasdasdas"
     },
     "extensions": {
       "ts": "module"
@@ -35,6 +35,7 @@
     "mercadopago": "^1.5.15",
     "micro-method-router": "^0.1.0",
     "next": "^13.1.6",
+    "nextjs-cors": "^2.1.2",
     "parse-bearer-token": "^1.0.1",
     "random-seed": "^0.3.0",
     "react": "^18.2.0",

@@ -1,4 +1,4 @@
-import authMiddleware from "helper/middleware"
+import authMiddleware, { handlerCORS } from "helper/middleware"
 import methods from "micro-method-router"
 import type { NextApiRequest,NextApiResponse } from "next"
 import { getData, updateData } from "controllers/user"
@@ -14,7 +14,6 @@ const userChema = yup.object().shape({
 }).noUnknown(true).strict()
 
 async function  getUserData(req:NextApiRequest,res:NextApiResponse,token){
-    console.log(token)
     let data = await getData(token)
      res.json({
          ...data
@@ -43,5 +42,7 @@ const handler = methods({
    
 })
 
+const authMiddlewarePass = authMiddleware(handler);
 
-export default authMiddleware(handler)
+
+export default handlerCORS(authMiddlewarePass);
