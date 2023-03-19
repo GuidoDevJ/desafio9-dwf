@@ -1,6 +1,7 @@
 import { syncAlgolia } from "controllers/algoliaControllers";
 import { NextApiRequest, NextApiResponse } from "next";
 import methods from "micro-method-router"
+import { handlerCORS } from "helper/middleware";
 
 async function sync(req: NextApiRequest, res: NextApiResponse) {
   const sync = await syncAlgolia();
@@ -14,6 +15,6 @@ let handler = methods({
     post:sync
 })
 
-export default handler
+export default handlerCORS(handler)
 
 

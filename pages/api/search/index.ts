@@ -3,6 +3,7 @@ import methods from "micro-method-router";
 import { searchProducts } from "controllers/algoliaControllers";
 import { schemaMiddleware } from "lib/yupValidation";
 import * as yup from "yup"
+import { handlerCORS } from "helper/middleware";
 const schemaQueryLimitAndOffser = yup.object().shape({
   q:yup.string().required(),
   offset:yup.string(),
@@ -42,4 +43,4 @@ let handler = methods({
   get: schemaSearch,
 });
 
-export default handler;
+export default handlerCORS(handlerCORS);

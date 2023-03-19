@@ -1,7 +1,7 @@
 import { Order } from "models/orders";
 import { NextApiRequest, NextApiResponse } from "next";
 import methods from "micro-method-router"
-import authMiddleware from "helper/middleware";
+import authMiddleware, { handlerCORS } from "helper/middleware";
   async function handlerGetAllOrders(req:NextApiRequest,res:NextApiResponse,token:string){
     try {
         let results = await Order.getAllOrdersByUserId(token) as any
@@ -17,4 +17,6 @@ const handler = methods({
     get:handlerGetAllOrders
 })
 
-export default authMiddleware(handler)
+const hanlderOrders = authMiddleware(handler)
+
+export default handlerCORS(hanlderOrders)

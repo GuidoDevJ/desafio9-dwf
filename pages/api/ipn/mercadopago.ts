@@ -3,6 +3,7 @@ import methods from "micro-method-router"
 import { checkMerchantOrders } from "lib/mercadopago"
 import { Order } from "models/orders"
 import { sendStatusPay } from "helper/sendEmailPay"
+import { handlerCORS } from "helper/middleware"
 const postHandler=async (req:NextApiRequest,res:NextApiResponse)=>{
     const {id,topic} = req.query
     if(topic=="merchant_order"){
@@ -27,4 +28,4 @@ const handler = methods({
     post:postHandler
 })
 
-export default handler
+export default handlerCORS(handler)

@@ -1,4 +1,4 @@
-import authMiddleware from "helper/middleware";
+import authMiddleware, { handlerCORS } from "helper/middleware";
 import { NextApiRequest, NextApiResponse } from "next";
 import methods from "micro-method-router";
 import { orderById } from "controllers/order";
@@ -23,5 +23,8 @@ const handler = methods({
   post: postHandler,
 });
 // "https://mercadopago-pi.vercel.app/api/webhooks/mercadopago"
-export default authMiddleware(handler);
+
+const handlerOrder = authMiddleware(handler)
+
+export default handlerCORS(handlerOrder);
 

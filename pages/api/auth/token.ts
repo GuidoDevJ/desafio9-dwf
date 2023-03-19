@@ -2,7 +2,8 @@ import methods from "micro-method-router"
 import type { NextApiRequest,NextApiResponse } from "next"
 import { checkEmailAndCode } from "controllers/auth"
 import { generateToken } from "helper/jsonToken"
-export default methods({
+import { handlerCORS } from "helper/middleware"
+const hanlder =  methods({
     async post(req:NextApiRequest,res:NextApiResponse){
         const {email,code} = req.body
         const data:any = await checkEmailAndCode(email,code)
@@ -20,4 +21,4 @@ export default methods({
     }
 })
 
-
+export default handlerCORS(hanlder)
