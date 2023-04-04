@@ -11,8 +11,10 @@ const schemaQueryLimitAndOffser = yup.object().shape({
 }).noUnknown(true).strict()
 
 async function search(req: NextApiRequest, res: NextApiResponse) {
+  console.log(req)
   try {
     let { results, offset, limit } = await searchProducts(req);
+    console.log(results)
     res.json({
       results: results.hits.map((p) => {
         return {
@@ -43,4 +45,4 @@ let handler = methods({
   get: schemaSearch,
 });
 
-export default handlerCORS(handlerCORS);
+export default handlerCORS(handler);
