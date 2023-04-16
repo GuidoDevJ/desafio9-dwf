@@ -28,7 +28,7 @@ export const orderById = async (id: string, body, token) => {
       ],
       back_urls: {
         success:
-          "https://console.firebase.google.com/u/0/project/md-dwf-9-cap-4/firestore/data/~2Forder~2F2a1ngNPe5demQdjkQbRN?hl=es-419",
+          "https://desafio-md-10.vercel.app/thanks",
       },
       external_reference,
       notification_url:
